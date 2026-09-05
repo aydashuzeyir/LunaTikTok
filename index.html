@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LunaTikTok</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#0009, transparent);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #ff2d55;
+}
+
+.feed {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.video-box {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  scroll-snap-align: start;
+  background: #111;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  position: absolute;
+  bottom: 75px;
+  left: 15px;
+  right: 80px;
+  text-shadow: 0 1px 4px #000;
+}
+
+.username {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.caption {
+  font-size: 15px;
+}
+
+.actions {
+  position: absolute;
+  right: 12px;
+  bottom: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: center;
+}
+
+.action {
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  text-shadow: 0 2px 5px #000;
+}
+
+.count {
+  font-size: 12px;
+  margin-top: -17px;
+}
+
+.liked {
+  color: #ff1744;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 58px;
+  background: #050505;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 20;
+  border-top: 1px solid #222;
+}
+
+.bottom button {
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 13px;
+}
+
+.add {
+  background: white !important;
+  color: black !important;
+  border-radius: 10px;
+  font-size: 25px !important;
+  width: 45px;
+  height: 35px;
+}
+
+#upload {
+  display: none;
+}
+
+.comment-box {
+  position: fixed;
+  left: 10%;
+  right: 10%;
+  bottom: 70px;
+  background: #181818;
+  padding: 15px;
+  border-radius: 15px;
+  display: none;
+  z-index: 30;
+}
+
+.comment-box input {
+  width: 75%;
+  padding: 10px;
+  border: 0;
+  border-radius: 8px;
+}
+
+.comment-box button {
+  padding: 10px;
+  border: 0;
+  border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+  <div class="logo">Luna<span>TikTok</span></div>
+</header>
+
+<div class="feed" id="feed">
+
+  <section class="video-box">
+    <video
+      src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+      loop
+      muted
+      playsinline
+      autoplay>
+    </video>
+
+    <div class="info">
+      <div class="username">@LunaUser</div>
+      <div class="caption">🌙 LunaTikTok-a xoş gəlmisən!</div>
+    </div>
+
+    <div class="actions">
+      <button class="action like">♥</button>
+      <div class="count">0</div>
+
+      <button class="action comment">💬</button>
+      <div class="count">0</div>
+
+      <button class="action">↗</button>
+      <div class="count">Paylaş</div>
+    </div>
+  </section>
+
+  <section class="video-box">
+    <video
+      src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+      loop
+      muted
+      playsinline>
+    </video>
+
+    <div class="info">
+      <div class="username">@LunaVideo</div>
+      <div class="caption">✨ Yeni videolar LunaTikTok-da</div>
+    </div>
+
+    <div class="actions">
+      <button class="action like">♥</button>
+      <div class="count">0</div>
+
+      <button class="action comment">💬</button>
+      <div class="count">0</div>
+
+      <button class="action">↗</button>
+      <div class="count">Paylaş</div>
+    </div>
+  </section>
+
+</div>
+
+<div class="comment-box" id="commentBox">
+  <input id="commentInput" placeholder
